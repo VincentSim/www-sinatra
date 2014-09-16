@@ -2,6 +2,8 @@
   Le Wagon - <%= @post.metadata[:title] %>
 <% end %>
 
+<% author = AUTHORS[@post.metadata[:author].to_sym] %>
+
 <div class="vertical-spacer"></div>
 
 <div class="container">
@@ -9,6 +11,12 @@
     <div class="col-md-8">
       <h1><%= @post.metadata[:title] %></h1>
 
+      <% if author %>
+        <p>
+          <%= author[:name] %> -
+          <a href="https://twitter.com/<%= author[:twitter] %>">@<%= author[:twitter] %></a>
+        </p>
+      <% end %>
       <article class="blog-post">
         <%= @post.content %>
       </article>
